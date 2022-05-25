@@ -1,23 +1,51 @@
-.fixd{
+.calendar-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    border: 1px solid rgb(182, 182, 182);
+    background-color: #fff;
+  }
+  
+  .calendar-table thead th {
+    vertical-align: bottom;
     text-align: center;
-    width: 500px;
-}
-
-ol{
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(7,1fr);
-    padding: 0px;
-    text-align: right;
-}
-
-.first-day{
-    grid-column-start: 5;
-    
-}
-
-.dia{   
-    background-color: gray;
-    font-weight: bold;
-   text-align: center;
-}
+    border-bottom: 2px solid rgb(0, 69, 158);
+    width: 14.2%;
+  }
+  
+  .calendar-table td, .calendar-table th {
+    border: 1px solid rgb(182, 182, 182);
+  }
+  
+  .calendar-table td, .calendar-table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid rgb(182, 182, 182);
+  }
+  
+  .calendar-day {
+    height: 10vh;
+    max-height: 10vh;
+    cursor: pointer;
+  }
+  
+  .calendar-items-wrapper {
+    margin-left: -10px;
+    margin-right: -10px;
+    overflow-y: auto;
+    max-height: calc(100% - 20px);
+  }
+  
+  .calendar-day.past-date {
+    background-color: rgba(190, 190, 190, 0.301);
+  }
+  
+  .calendar-day:hover {
+    background-color: rgba(184, 183, 255, 0.616)
+  }
+  
+  .blue-date {
+    color: rgb(16, 110, 190);
+  }
+  

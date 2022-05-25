@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatSliderModule } from '@angular/material/slider';
+import { ChunkPipe } from './pipe/chunk.pipe';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { MatSliderModule } from '@angular/material/slider';
     CitasComponent,
     LoginComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    ChunkPipe
   ],
   imports: [
     BrowserModule,
