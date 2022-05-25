@@ -33,11 +33,11 @@
       <form class="register-form">
         <input [(ngModel)]="usuario.nombre" type="text" placeholder="username" [ngModelOptions]="{standalone: true}"/>
         <input [(ngModel)]="usuario.password" type="password" placeholder="password" [ngModelOptions]="{standalone: true}"/>
-        <select name="" id="">
-            <option value=""></option>
+        <select [(ngModel)]="usuario.especialidad" name="especialidad" id="especialidad">
+            <option *ngFor="let e of especialidad" value="{{e.id}}">{{e.especialidad}}</option>
         </select>
-        <button>create</button>
-        <p class="message">Already registered? <a href="#">Sign In</a></p>
+        <button (click)="agregar_admin()" >create</button>
+        <p class="message">Already registered? <a (click)="modo=1">Sign In</a></p>
       </form>
     </div>
 </div>
