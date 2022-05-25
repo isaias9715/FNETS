@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatSliderModule } from '@angular/material/slider';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { MatSliderModule } from '@angular/material/slider';
     FullCalendarModule,
     MatSliderModule,
   
-    NgbModule
+    NgbModule,
+  
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
