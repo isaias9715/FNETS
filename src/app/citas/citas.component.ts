@@ -24,6 +24,7 @@ export class CitasComponent implements OnInit {
     this.service.get_citas()
     
   }
+  
   options={
     plugins:[dayGridPlugin,timeGridPlugin,interactionPlugin],
     defaultDate: new Date(),

@@ -7,11 +7,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { CitasComponent } from './citas/citas.component';
 import { CommonModule } from '@angular/common';
 import {FullCalendarModule} from 'primeng/fullcalendar';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CitasComponent
+    CitasComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

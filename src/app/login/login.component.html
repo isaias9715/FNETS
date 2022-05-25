@@ -1,0 +1,47 @@
+<!-- ingreso , log in -->
+<div *ngIf="modo==1">
+<div class="login-page">
+    <div class="form">
+     
+      <form class="login-form">
+        <input type="text" placeholder="username"/>
+        <input type="password" placeholder="password"/>
+        <button>login</button>
+        <p class="message">Not registered? <a (click)="modo=2">Create an account</a></p>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- creacion de cuenta usuario normal -->
+<div *ngIf="modo==2">
+<div class="login-page">
+    <div class="form">
+      <form class="register-form">
+        <input type="text" placeholder="name"/>
+        <input type="password" placeholder="password"/>
+     
+        <button>create</button>
+        <p class="message">Already registered? <a (click)="modo=1">Sign In</a></p>
+      </form>
+    </div>
+</div>
+</div>
+<!-- creacion de cuenta usuario admin-->
+<div *ngIf="modo==2">
+<div class="login-page">
+    <div class="form">
+      <form class="register-form">
+        <input type="text" placeholder="name"/>
+        <input type="password" placeholder="password"/>
+        <select name="" id="">
+            <option value=""></option>
+        </select>
+        <button>create</button>
+        <p class="message">Already registered? <a href="#">Sign In</a></p>
+      </form>
+    </div>
+</div>
+</div>
+ 
+
+
