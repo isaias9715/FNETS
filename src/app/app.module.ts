@@ -8,12 +8,18 @@ import { CitasComponent } from './citas/citas.component';
 import { CommonModule } from '@angular/common';
 import {FullCalendarModule} from 'primeng/fullcalendar';
 import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { NavComponent } from './nav/nav.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
     AppComponent,
     CitasComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +27,10 @@ import { LoginComponent } from './login/login.component';
     FormsModule,
     HttpClientModule,
     CommonModule,
-    FullCalendarModule
+    FullCalendarModule,
+    MatSliderModule,
+  
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
