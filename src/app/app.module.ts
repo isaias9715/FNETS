@@ -1,16 +1,25 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CitasComponent } from './citas/citas.component';
+import { CommonModule } from '@angular/common';
+import {FullCalendarModule} from 'primeng/fullcalendar';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CitasComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    CommonModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
