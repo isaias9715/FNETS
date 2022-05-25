@@ -13,7 +13,13 @@ export class ServicioService {
   insert_usuario(data:any){
     return this.http.post(`${this.url}usuarios/cliente`,data)
   }
+  insert_admin(data:any){
+    return this.http.post(`${this.url}usuarios/admin`,data)
+  }
   login_usuario(data:any){
     return this.http.post(`${this.url}usuarios/`,data)
+  }
+  get_especialidades(){
+    return this.http.get(`${this.url}usuarios/especialidades`)
   }
 }
