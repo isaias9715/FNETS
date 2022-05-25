@@ -4,9 +4,9 @@
     <div class="form">
      
       <form class="login-form">
-        <input type="text" placeholder="username"/>
-        <input type="password" placeholder="password"/>
-        <button>login</button>
+        <input [(ngModel)]="usuario.nombre" type="text" placeholder="username" [ngModelOptions]="{standalone: true}"/>
+        <input [(ngModel)]="usuario.password" type="password" placeholder="password" [ngModelOptions]="{standalone: true}"/>
+        <button (click)="ingresar_usuario()">login</button>
         <p class="message">Not registered? <a (click)="modo=2">Create an account</a></p>
       </form>
     </div>
@@ -17,10 +17,10 @@
 <div class="login-page">
     <div class="form">
       <form class="register-form">
-        <input type="text" placeholder="name"/>
-        <input type="password" placeholder="password"/>
+        <input [(ngModel)]="usuario.nombre" type="text" placeholder="username" [ngModelOptions]="{standalone: true}"/>
+        <input [(ngModel)]="usuario.password" type="password" placeholder="password" [ngModelOptions]="{standalone: true}"/>
      
-        <button>create</button>
+        <button (click)="agregar_usuario()">create1</button>
         <p class="message">Already registered? <a (click)="modo=1">Sign In</a></p>
       </form>
     </div>
@@ -31,8 +31,8 @@
 <div class="login-page">
     <div class="form">
       <form class="register-form">
-        <input type="text" placeholder="name"/>
-        <input type="password" placeholder="password"/>
+        <input [(ngModel)]="usuario.nombre" type="text" placeholder="username" [ngModelOptions]="{standalone: true}"/>
+        <input [(ngModel)]="usuario.password" type="password" placeholder="password" [ngModelOptions]="{standalone: true}"/>
         <select name="" id="">
             <option value=""></option>
         </select>
