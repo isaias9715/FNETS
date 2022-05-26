@@ -1,103 +1,105 @@
-import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, LOCALE_ID, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { ServicioService } from '../servicio.service';
-
-
-export class CalendarDay {
-  public date: Date;
-  public title: string;
-  public isPastDate: boolean;
-  public isToday: boolean;
-
-  public getDateString() {
-    return this.date.toISOString().split("T")[0]
-  }
-
-  constructor(d: Date) {
-    this.date = d;
-    this.isPastDate = d.setHours(0, 0, 0, 0) < new Date().setHours(0, 0, 0, 0);
-    this.isToday = d.setHours(0, 0, 0, 0) == new Date().setHours(0, 0, 0, 0);
-    this.title = '';
-  }
-
-
-}
-
+import * as moment from 'moment';
+import localeEs from '@angular/common/locales/es';
+import { registerLocaleData } from '@angular/common'; 
+registerLocaleData(localeEs, 'es');
 
 @Component({
   selector: 'app-citas',
   templateUrl: './citas.component.html',
+  providers: [{provide: LOCALE_ID, useValue: 'es'}],
   styleUrls: ['./citas.component.css']
 })
 
 
 export class CitasComponent implements OnInit {
 
-  constructor(private service: ServicioService) { }
+  mostrar=0;
 
-  public calendar: CalendarDay[] = [];
-  public monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-    "Julio", "Augosto", "Septiembre", "Octubre", "Noviembre", "Dicembre"
-  ];
+   today = new Date();
+  dd = String(this.today.getDate()).padStart(2, '0'); 
+  mm = String(this.today.getMonth() + 1).padStart(2, '  0'); //Enero es 0!  
+  yyyy = this.today.getFullYear();     
 
- 
-  checkday(today: any){
-    console.log("Día: ",today);
-  }
-  public displayMonth: string | undefined;
-  private monthIndex: number = 0;
+  // Array de Semanas  
+  week: any = ["Lunes ", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado", "Domingo",];
 
-  ngOnInit(): void {
-    this.generateCalendarDays(this.monthIndex);
-  }
+  // Array de Mes
+  monthSelect: any[] = [];
 
-  private generateCalendarDays(monthIndex: number): void {
-   
-    this.calendar = [];
-
-    let day: Date = new Date(new Date().setMonth(new Date().getMonth() + monthIndex));
-
-    this.displayMonth = this.monthNames[day.getMonth()];
-
-    let startingDateOfCalendar = this.getStartDateForCalendar(day);
-
-    let dateToAdd = startingDateOfCalendar;
-
-    for (var i = 0; i < 42; i++) {
-      this.calendar.push(new CalendarDay(new Date(dateToAdd)));
-      dateToAdd = new Date(dateToAdd.setDate(dateToAdd.getDate() + 1));
-    }
-  }
-
-  private getStartDateForCalendar(selectedDate: Date) {
+  //Array de Fecha
+  dateSelect: any;
   
-    let lastDayOfPreviousMonth = new Date(selectedDate.setDate(0));
+  constructor(private service: ServicioService) { }
+  
+  // FUNCIÓN QUE CREA OBJETO TIPO DATE 
+  getDaysFromDate(month: any, year: any) {
+    
 
-    let startingDateOfCalendar: Date = lastDayOfPreviousMonth;
+    const startDate = moment(`${year}/${month}/01`,["MM-DD-YYYY", "YYYY-MM-DD"])
+    
+    
+    const endDate = startDate.clone().endOf('month') //obj cuando finaliza el mes
+    
+    
+    this.dateSelect = startDate;
+    
+    
 
-    if (startingDateOfCalendar.getDay() != 1) {
-      do {
-        startingDateOfCalendar = new Date(startingDateOfCalendar.setDate(startingDateOfCalendar.getDate() - 1));
-      } while (startingDateOfCalendar.getDay() != 1);
+    // trae en días 'days' la cantidad de dias que existen de diferencia entre fecha de inicio y final
+    const diffDays = endDate.diff(startDate, 'days', true) 
+    const numberDays = Math.round(diffDays); //redondea el numero
+
+    // 
+    const arrayDays = Object.keys([...Array(numberDays)]).map((a: any) => {
+      a = parseInt(a) + 1;
+      // console.log("prueba: ",a);
+
+      // Se crea objeto de fecha
+      const dayObject = moment(`${year}-${month}-${a}`,["MM-DD-YYYY", "YYYY-MM-DD"]);
+
+      return {
+        name: dayObject.format("dddd"), //objeto "nombre" del dia
+        value: a, //numero del día
+        indexWeek: dayObject.isoWeekday() //indice que representa el dia en la semana
+      };
+    });
+
+    this.monthSelect = arrayDays; //Se guarda en esta variable
+    // console.log(this.monthSelect)
+  }
+
+
+  changeMonth(flag: number) {
+    if (flag < 0) {
+      const prevDate = this.dateSelect.clone().subtract(1, "month");
+      this.getDaysFromDate(prevDate.format("MM"), prevDate.format("YYYY"));
+    } else {
+      const nextDate = this.dateSelect.clone().add(1, "month");
+      this.getDaysFromDate(nextDate.format("MM"), nextDate.format("YYYY"));
     }
-
-    return startingDateOfCalendar;
   }
 
-  public increaseMonth() {
-    this.monthIndex++;
-    this.generateCalendarDays(this.monthIndex);
+  clickDay(day: { value: any; }) {
+    const monthYear = this.dateSelect.format('YYYY-MM')
+    const parse = `${monthYear}-${day.value}`
+    const objectDate = moment(parse, ["MM-DD-YYYY", "YYYY-MM-DD"])
+    console.log(parse);
+    
+    // console.log(objectDate);
+    // this.dateValue = objectDate;
+
+
+  }
+  
+  ngOnInit(): void {
+    // console.log("Today: ",this.dd);
+    // console.log("Today Mes: ",this.mm);
+    // console.log("Today Año: ",this.yyyy);
+    this.getDaysFromDate(this.mm,this.yyyy);
   }
 
-  public decreaseMonth() {
-    this.monthIndex--
-    this.generateCalendarDays(this.monthIndex);
-  }
-
-  public setCurrentMonth() {
-    this.monthIndex = 0;
-    this.generateCalendarDays(this.monthIndex);
-  }
 
 
- 
 }

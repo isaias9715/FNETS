@@ -1,15 +1,7 @@
-.center {
-    justify-content: center;
-    text-align: center;
-    align-content: center;
-    align-self: center;
-}
-
 .navbar {
     background-color: rgb(0, 69, 158);
-    top: 0;
-    position: sticky;
     box-shadow: rgba(0, 0, 0, 0.35) 0px -30px 36px -28px inset;
+    /* justify-content: around; */
 }
 
 a {
@@ -17,42 +9,81 @@ a {
     margin-right: 15px;
 }
 
-
-.active .mat-icon{
-    color: inherit;
- }
-i{
-    font-size: 28px; 
+.imgusr {
+    width: 30px;
+    border-radius: 25px;
+    margin: 0;
+    padding: 0;
 }
 
-i:hover{
+i {
+    font-size: 25px;
+    /* color: rgba(0, 0, 0, 0.644); */
+}
+
+i:hover {
     color: #fff;
 }
 
+.router-link-active {
+    border-bottom: 3px solid white;
+    border-radius: 5px;
+}
 
-.nav-link,
-.dropdown {
+.router-link-active-lgn {
+    border-bottom: 3px solid white;
+    border-radius: 5px;
+}
+
+.nav-link {
     color: rgb(187, 187, 187);
-    margin-left: 8px;
-}
-
-.nav-link:hover {
-    font-size: 20px;
-    transition: ease-in all 0.1s;
-}
-
-
-.navbar-brand {
-    margin-left: 1vw;
-    color: #fff;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
 }
 
 .dropdown-toggle {
     color: #fff;
 }
 
-.loginbtn{
-    margin-right: 1vw;
+/* Cellphone devices */
+@media (min-width: 10px) {
+    .logo, .loginbtn {
+        display: none;
+    }
+
+    .center {
+        justify-content: center;
+        align-self: center;
+    }
+
+    .navlg{
+        display: none;
+    }
+    
+    .navsm{
+        display: block;
+    }
+
+}
+
+/* Large devices (large desktops) */
+@media (min-width: 1200px) {
+    .logo {
+        display: block;
+        margin-left: 1vw;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+    }
+
+    .loginbtn {
+        display: block;
+        justify-content: end !important;
+    }
+
+    .navlg{
+        display: block;
+    }
+    
+    .navsm{
+        display: none;
+    }
 }

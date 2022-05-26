@@ -12,12 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatSliderModule } from '@angular/material/slider';
-<<<<<<< HEAD
 import { ChunkPipe } from './pipe/chunk.pipe';
-
-=======
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
->>>>>>> 9b8f557ad21c86ae557a4f64c82f63e2bceca9e6
 
 @NgModule({
   declarations: [

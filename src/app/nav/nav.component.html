@@ -1,48 +1,67 @@
-<nav class="navbar navbar-expand-lg ">
-    <a class="navbar-brand" href="#">AgendaNet</a>
+<!-- NAV GRANDE -->
+<div class="navlg">
+    <nav class="navbar d-flex justify-content-between mb-3">
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+        <div class="p-2">
+            <a class="logo">AgendaNet</a>
+        </div>
 
-    <div class="justify-content-center collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <div class="p-2">
+            <ul class="nav">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="./home" title="Home" routerLinkActive="router-link-active"><i
+                            class="fas fa-home"></i></a>
+                </li>
 
-            <li class="nav-item active">
-                <a class="nav-link" routerLink="./home" [routerLinkActive]="['active']"><i class="fas fa-home" aria-hidden="true"></i></a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="./agenda" title="Agenda" routerLinkActive="router-link-active"><i
+                            class="fas fa-calendar"></i></a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link" routerLink="./agenda" [routerLinkActive]="['active']"><i class="fas fa-calendar"></i></a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="./*" title="Settings" routerLinkActive="router-link-active"><i
+                            class="fas fa-cog"></i></a>
+                </li>
+            </ul>
+        </div>
 
 
-            <!-- <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li> -->
+        <div class="p-2 loginbtn">
+            <ul class="nav" style="list-style-type: none;">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="./login" title="Usuario" routerLinkActive="router-link-active-lgn">
+                        <img src="../../assets/icono.png" class="imgusr" alt="">
 
-        </ul>
+                    </a>
+                </li>
+            </ul>
 
-       
-
-    </div>
-
-    <div class="align-items-end loginbtn" id="navbarSupportedContent">
-
-        <ul class="navbar-nav">
-            <li>
-                <a class="nav-link" routerLink="./login" [routerLinkActive]="['active']">LogIN</a>
-            </li>
-        </ul>
+        </div>
         
-    </div>
-</nav>
+    </nav>
+</div>
+
+<!-- NAV CHICO -->
+<div class="navsm">
+    <nav class="navbar d-flex justify-content-center">
+
+        <div class="p-2">
+            <ul class="nav">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="./home" title="Home" routerLinkActive="router-link-active"><i
+                            class="fas fa-home"></i></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="./agenda" title="Agenda" routerLinkActive="router-link-active"><i
+                            class="fas fa-calendar"></i></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="./*" title="Settings" routerLinkActive="router-link-active"><i
+                            class="fas fa-cog"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

@@ -1,60 +1,42 @@
-<div class="container">
-    <br><br>
-    <div>
-        <div>
-            {{ displayMonth }}
+<div class="d-flex" *ngIf="mostrar==0">
+
+    <!-- CARD -->
+   
+     
+    <div class="division card">
+
+        <!-- HEADER -->
+        <div class="header-calendar">
+
+        
+            <!-- FECHA -->
+            <h1 class="mes mr-auto p-2">{{dateSelect | date:'MMMM, yyyy' | uppercase}}</h1>
+          
+            <!-- BOTON ANTERIOR -->
+            <div><button (click)="changeMonth(-1)" class="btn p-2">Anterior</button></div>
+
+            <!-- BOTON SIGUIENTE -->
+            <div><button (click)="changeMonth(1)" class="btn p-2">Siguiente</button></div>
+
         </div>
-        <div>
-            <input type="button" (click)="setCurrentMonth()" value="Hoy" />
-            <input type="button" (click)="decreaseMonth()" value="Mes Anterior" />
-            <input type="button" (click)="increaseMonth()" value="Mes Siguiente" />
-        </div>
-    </div>
-    <br>
 
-    <div class="table-responsive">
+        <!-- CONTENIDO DÍAS -->
+        <ol>
+            <li *ngFor="let day of week" class="day-name">{{day | slice:0:3}}</li>
 
-        <table class='calendar-table' *ngIf="calendar">
-            <thead>
-                <tr>
-                    <th>Lun</th>
-                    <th>Mar</th>
-                    <th>Mié</th>
-                    <th>Jue</th>
-                    <th>Vie</th>
-                    <th>Sab</th>
-                    <th>Dom</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let row of calendar | chunk: 7; let i = index">
-                    <td class="calendar-day" [ngClass]="{'past-date': c.isPastDate, 'today': c.isToday}"
-                        *ngFor="let c of row; let j = index" (click)="checkday(c.date)">
+            <li (click)="clickDay(day); mostrar=1" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'"
+                *ngFor="let day of monthSelect;let first = first">
+                <span>{{day?.value}}</span>
 
-                        <div class="calendar-day-header"
-                            [ngClass]="{'blue-date': c.isToday}">
+        </ol>
 
-                            <strong>{{c.date.getDate()}}</strong> <strong
-                               *ngIf="c.isToday || (i==0 && j==0) || (c.date.getDate() == 1)">
-                                {{monthNames[c.date.getMonth()]}}</strong>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 
 </div>
 
-<!-- <button>Agregar</button>
-    <input [(ngModel)]="citas.nombre" type="text" name="" id="nombre">
-    <label for="nombre">Nombre</label>
-    <input [(ngModel)]="citas.descripcion" type="text" name="" id="area">
-    <label for="area">Descripcion</label>
-    
-    
-    
-    <table><thead></thead><tbody></tbody></table>
-    
-    
-    <p-fullCalendar [events]="events" [options]="options"></p-fullCalendar> -->
+
+<div class="d-flex justify-content-center" *ngIf="mostrar==1">
+
+    hola
+
+</div>
